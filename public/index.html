@@ -4,11 +4,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trym.it - URL Shortener</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
+    <div class="container">
+        <!-- Auth Section -->
+        <div id="authSection" class="auth-section">
+            <div class="auth-header">
+                <h1>Trym.it</h1>
+                <p>Simple URL Shortener with Link Management</p>
+            </div>
 
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form active">
+                <h2>Login</h2>
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label for="loginUsername">Username</label>
+                        <input type="text" id="loginUsername" required minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <div id="loginError" class="error-message"></div>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-form">
+                <h2>Register</h2>
+                <form id="registerFormElement">
+                    <div class="form-group">
+                        <label for="registerUsername">Username</label>
+                        <input type="text" id="registerUsername" required minlength="3">
+                        <small>At least 3 characters</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required minlength="6">
+                        <small>At least 6 characters</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div id="registerError" class="error-message"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main App Section -->
+        <div id="appSection" class="app-section" style="display: none;">
+            <div class="app-header">
+                <h1>Trym.it</h1>
+                <div class="user-info">
+                    <span id="usernameDisplay"></span>
+                    <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+                </div>
+            </div>
+
+            <!-- Create Link Form -->
+            <div class="create-link-section">
+                <h2>Create Short Link</h2>
+                <form id="createLinkForm">
+                    <div class="form-group">
+                        <label for="urlInput">URL to shorten</label>
+                        <input type="url" id="urlInput" placeholder="https://example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customCodeInput">Custom code (optional)</label>
+                        <input type="text" id="customCodeInput" placeholder="my-link" pattern="[a-zA-Z0-9-_]{3,20}">
+                        <small>3-20 characters: letters, numbers, hyphens, underscores</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiryInput">Expires in (hours, optional)</label>
+                        <input type="number" id="expiryInput" placeholder="24" min="1" max="8760">
+                        <small>Leave empty for no expiration</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Short Link</button>
+                    <div id="createLinkError" class="error-message"></div>
+                    <div id="createLinkSuccess" class="success-message"></div>
+                </form>
+            </div>
+
+            <!-- Links List -->
+            <div class="links-section">
+                <h2>Your Links</h2>
+                <div id="linksList" class="links-list">
+                    <p class="loading">Loading links...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
 </body>
 
 </html>
