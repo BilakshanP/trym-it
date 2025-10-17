@@ -2,6 +2,8 @@
 
 A simple, elegant URL shortener with user authentication and link management features.
 
+Hosted at: [uca.bilakshan.dev](https://uca.bilakshan.dev/)
+
 ![Login Page](assets/main.png)
 
 ## Features
