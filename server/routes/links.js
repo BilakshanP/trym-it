@@ -70,7 +70,7 @@ router.post('/', authenticateToken, (req, res) => {
 router.get('/', authenticateToken, (req, res) => {
   try {
     const links = storage.getUserLinks(req.user.username);
-    
+
     const linksWithUrls = links.map(link => ({
       id: link.id,
       url: link.url,

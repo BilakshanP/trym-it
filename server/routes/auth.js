@@ -15,8 +15,8 @@ router.post('/register', async (req, res) => {
     }
 
     if (username.length < 3 || password.length < 6) {
-      return res.status(400).json({ 
-        error: 'Username must be at least 3 characters and password at least 6 characters' 
+      return res.status(400).json({
+        error: 'Username must be at least 3 characters and password at least 6 characters'
       });
     }
 
@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
 
     // Create user
     const user = storage.createUser(username, passwordHash);
-    
+
     if (!user) {
       return res.status(409).json({ error: 'Username already exists' });
     }
@@ -33,10 +33,10 @@ router.post('/register', async (req, res) => {
     // Generate token
     const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
-    res.status(201).json({ 
+    res.status(201).json({
       message: 'User created successfully',
       token,
-      username 
+      username
     });
   } catch (error) {
     console.error('Register error:', error);
@@ -68,10 +68,10 @@ router.post('/login', async (req, res) => {
     // Generate token
     const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
-    res.json({ 
+    res.json({
       message: 'Login successful',
       token,
-      username 
+      username
     });
   } catch (error) {
     console.error('Login error:', error);
